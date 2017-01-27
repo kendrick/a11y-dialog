@@ -1,16 +1,16 @@
-# A11y Dialog
+# Rocketbelt Accessible Dialog
 
 This repository is a fork from [accessible-modal-dialog](https://github.com/gdkraus/accessible-modal-dialog) by [Greg Kraus](https://github.com/gdkraus). We at [Edenspiekermann](http://edenspiekermann.com) are big fans of the original version, although we discovered we could improve it and make it even better. On top of that, the original script depends on jQuery, which happened to be a problem for us.
 
 The original repository being apparently unmaintained, we decided to fork it and release our own version of the accessible modal dialog. All credits to the original author.
 
-You can try the [live demo](http://edenspiekermann.github.io/a11y-dialog/).
+You can try the [live demo](http://kendrick.github.io/rocketbelt-dialog/).
 
 ## Nice things to know
 
 - No dependency (not even jQuery);
 - Possibility to have several different dialog windows on the page;
-- DOM API (`data-a11y-dialog-show="dialog-id"`, `data-a11y-dialog-hide`);
+- DOM API (`data-rb-dialog-show="dialog-id"`, `data-rb-dialog-hide`);
 - JS API (`dialog.show()`, `dialog.hide()`, `dialog.destroy()`, `dialog.shown`);
 - DOM events (`dialog:show`, `dialog:hide`);
 - No `display` manipulation in JS, the hiding mechanism is entirely up to the CSS layer (using `[aria-hidden]` selectors);
@@ -22,18 +22,11 @@ You can try the [live demo](http://edenspiekermann.github.io/a11y-dialog/).
 ## Install
 
 ```
-npm install a11y-dialog --save
+npm install rocketbelt-dialog --save
 ```
-
-```
-bower install espi-a11y-dialog
-```
-
 Or you could also copy/paste the script in your project directly, but you will be disconnected from this repository, making it hard for your to get updates.
 
 ## Usage
-
-You will find a concrete demo in the [example](https://github.com/edenspiekermann/a11y-dialog/tree/master/example) folder of this repository, but basically here is the gist:
 
 ### HTML
 
@@ -61,9 +54,9 @@ Here is the basic markup, which can be enhanced. Pay extra attention to the comm
   <!--
     Overlay related notes:
     - It has to have the `tabindex="-1"` attribute.
-    - It doesn’t have to have the `data-a11y-dialog-hide` attribute, however this is recommended. It hides the dialog when clicking outside of it.
+    - It doesn’t have to have the `data-rb-dialog-hide` attribute, however this is recommended. It hides the dialog when clicking outside of it.
   -->
-  <div tabindex="-1" data-a11y-dialog-hide></div>
+  <div tabindex="-1" data-rb-dialog-hide></div>
 
   <!--
     Dialog window content related notes:
@@ -89,10 +82,10 @@ Here is the basic markup, which can be enhanced. Pay extra attention to the comm
       <!--
         Closing button related notes:
         - It does have to have the `type="button"` attribute.
-        - It does have to have the `data-a11y-dialog-hide` attribute.
+        - It does have to have the `data-rb-dialog-hide` attribute.
         - It does have to have an aria-label attribute if you use an icon as content.
       -->
-      <button type="button" data-a11y-dialog-hide aria-label="Close this dialog window">
+      <button type="button" data-rb-dialog-hide aria-label="Close this dialog window">
         &times;
       </button>
     </div>
@@ -133,19 +126,19 @@ There are 2 ways of toggling the dialog. Either through the DOM API, or directly
 The following button will open the dialog with the `my-accessible-dialog` id when interacted with.
 
 ```html
-<button type="button" data-a11y-dialog-show="my-accessible-dialog">Open the dialog</button>
+<button type="button" data-rb-dialog-show="my-accessible-dialog">Open the dialog</button>
 ```
 
 The following button will close the dialog in which it lives when interacted with.
 
 ```html
-<button type="button" data-a11y-dialog-hide aria-label="Close the dialog">&times;</button>
+<button type="button" data-rb-dialog-hide aria-label="Close the dialog">&times;</button>
 ```
 
 The following button will close the dialog with the `my-accessible-dialog` id when interacted with. Given that the only focusable elements when the dialog is open are the focusable children of the dialog itself, it seems rather unlikely that you will ever need this but in case you do, well you can.
 
 ```html
-<button type="button" data-a11y-dialog-hide="my-accessible-dialog" aria-label="Close the dialog">&times;</button>
+<button type="button" data-rb-dialog-hide="my-accessible-dialog" aria-label="Close the dialog">&times;</button>
 ```
 
 Regarding the JS API, it simply consists on `show()` and `hide()` methods on the dialog instance.
@@ -187,7 +180,7 @@ npm test
 
 ## Deploy example
 
-The [example page](http://edenspiekermann.github.io/a11y-dialog/) is deployed through [GitHub Pages](https://pages.github.com/).
+The [example page](http://kendrick.github.io/rocketbelt-dialog/) is deployed through [GitHub Pages](https://pages.github.com/).
 
 ```
 npm run deploy

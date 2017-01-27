@@ -70,9 +70,9 @@
   var A11yDialog = function (node, main) {
     main = main || document.querySelector('#main');
     var that = this;
-    var openers = $$('[data-a11y-dialog-show="' + node.id + '"]');
-    var closers = $$('[data-a11y-dialog-hide]', node)
-      .concat($$('[data-a11y-dialog-hide="' + node.id + '"]'));
+    var openers = $$('[data-rb-dialog-show="' + node.id + '"]');
+    var closers = $$('[data-rb-dialog-hide]', node)
+      .concat($$('[data-rb-dialog-hide="' + node.id + '"]'));
 
     if (node.hasAttribute('aria-hidden')) {
       this.shown = !JSON.parse(node.getAttribute('aria-hidden'));
