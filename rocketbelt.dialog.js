@@ -1,6 +1,46 @@
 (function (global) {
   'use strict';
 
+  function addClass(elements, myClass) {
+    if (!elements) { return; }
+
+    if (typeof(elements) === 'string') {
+      elements = document.querySelectorAll(elements);
+    }
+
+    // If match is a single DOM element, make it an array to simplify behavior
+    else if (elements.tagName) {
+      elements=[elements];
+    }
+
+    // Add class to all chosen elements
+    for (var i = 0; i < elements.length; i++) {
+      if ( (' '+elements[i].className+' ').indexOf(' ' + myClass + ' ') < 0 ) {
+        elements[i].className += ' ' + myClass;
+      }
+    }
+  }
+
+  function removeClass(elements, myClass) {
+    if (!elements) { return; }
+
+    if (typeof(elements) === 'string') {
+      elements = document.querySelectorAll(elements);
+    }
+
+    // If match is a single DOM element, make it an array to simplify behavior
+    else if (elements.tagName) {
+      elements=[elements];
+    }
+    // Create pattern to find class name
+    var reg = new RegExp('(^| )'+myClass+'($| )', 'g');
+
+    // Remove class from all chosen elements
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].className = elements[i].className.replace(reg, ' ');
+    }
+  }
+
   // Helper function for dispatching cross browser dispatch events
   // from http://youmightnotneedjquery.com/#trigger_custom
   function dispatchEvent (el, eventName, emmiter) {
@@ -111,6 +151,9 @@
       if (that.shown) return;
 
       that.shown = true;
+
+      addClass(main, 'is-dialog-open');
+
       node.removeAttribute('aria-hidden');
       main.setAttribute('aria-hidden', 'true');
       focusedBeforeDialog = document.activeElement;
@@ -124,6 +167,9 @@
       if (!that.shown) return;
 
       that.shown = false;
+
+      removeClass(main, 'is-dialog-open');
+
       node.setAttribute('aria-hidden', 'true');
       main.removeAttribute('aria-hidden');
       focusedBeforeDialog && focusedBeforeDialog.focus();
