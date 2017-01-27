@@ -17,9 +17,8 @@
     "rocketbelt.dialog.min.js"
   ],
   "scripts": {
-    "copy": "cp rocketbelt.dialog.js example/main.js",
     "minify": "uglifyjs rocketbelt.dialog.js -o rocketbelt.dialog.min.js -c -m",
-    "build": "npm run minify && npm run copy",
+    "build": "npm run minify",
     "postbuild": "npm run add-version",
     "predeploy": "npm run build",
     "deploy": "git subtree push --prefix example origin gh-pages",
