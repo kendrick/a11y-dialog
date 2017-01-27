@@ -35,7 +35,7 @@ Here is the basic markup, which can be enhanced. Pay extra attention to the comm
 ```html
 <!--
   Main container related notes:
-  - It can have a different id than `main`, however you will have to pass it as a second argument to the A11yDialog instance. See further down.
+  - It can have a different id than `main`, however you will have to pass it as a second argument to the rbDialog instance. See further down.
 -->
 <div id="main">
   <!--
@@ -109,14 +109,14 @@ You will have to implement some styles for the dialog to “work” (visually sp
 // Get the dialog element (with the accessor method you want)
 var dialogEl = document.getElementById('my-accessible-dialog');
 
-// Instanciate a new A11yDialog module
-var dialog = new A11yDialog(dialogEl);
+// Instanciate a new rbDialog module
+var dialog = new rbDialog(dialogEl);
 ```
 
-The script assumes the main container of the page has a `main` id. If it is not the case, you can pass the main node as second argument to the `A11yDialog` constructor:
+The script assumes the main container of the page has a `main` id. If it is not the case, you can pass the main node as second argument to the `rbDialog` constructor:
 
 ```javascript
-var dialog = new A11yDialog(dialogEl, mainEl);
+var dialog = new rbDialog(dialogEl, mainEl);
 ```
 
 ## Toggling the dialog window

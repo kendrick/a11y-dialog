@@ -63,11 +63,11 @@
   var focusedBeforeDialog;
 
   /**
-   * A11yDialog constructor
+   * rbDialog constructor
    * @param {Node} node - Dialog element
    * @param {Node} main - Main element of the page
    */
-  var A11yDialog = function (node, main) {
+  var rbDialog = function (node, main) {
     main = main || document.querySelector('#main');
     var that = this;
     var openers = $$('[data-rb-dialog-show="' + node.id + '"]');
@@ -146,12 +146,12 @@
   };
 
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = A11yDialog;
+    module.exports = rbDialog;
   } else if (typeof define === 'function' && define.amd) {
-    define('A11yDialog', [], function () {
-      return A11yDialog;
+    define('rbDialog', [], function () {
+      return rbDialog;
     });
   } else if (typeof global === 'object') {
-    global.A11yDialog = A11yDialog;
+    global.rbDialog = rbDialog;
   }
 }(this));
