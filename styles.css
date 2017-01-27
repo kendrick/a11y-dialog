@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,400i|Open+Sans:300,300i,400,400i,600');
 
+.is-dialog-open {
+  filter: blur(3px);
+  transition: filter 300ms ease-out;
+}
+
 .dialog[aria-hidden="true"] {
   display: none;
 }
